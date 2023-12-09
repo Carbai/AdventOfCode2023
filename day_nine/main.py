@@ -1,4 +1,3 @@
-import functools
 def parse_input(filename: str) -> list:
     with open(filename) as ifile:
         lines=ifile.read().splitlines()
@@ -12,15 +11,11 @@ def get_diff(numbers: list) -> int:
     next_n=[numbers[-1]]
     tmp=[]
     curr_numbers=numbers[:]
-    #print((curr_numbers))
     while not stop:
         for i,n in enumerate(curr_numbers[1::]):
-       #     print(i, n, type(n))
             tmp.append(n-curr_numbers[i])
-      #      print(curr_numbers)
         next_n.append(tmp[-1])
         curr_numbers=tmp
-     #   print(next_n,tmp,curr_numbers)
         if all(x==0 for x in curr_numbers):
             stop=True
         tmp=[]
@@ -44,16 +39,12 @@ def get_diff2(numbers: list) -> list:
     next_n=[]
     tmp=[]
     curr_numbers=numbers[:]
- #   print(curr_numbers)
 
     while not stop:
         for i,n in enumerate(curr_numbers[1::]):
-        #     print(i, n, type(n))
             tmp.append(n-curr_numbers[i])
-     #   print(curr_numbers,tmp,n,curr_numbers[i],'here')
         next_n.append(tmp[0])
         curr_numbers=tmp
-        #   print(next_n,tmp,curr_numbers)
         if all(x==0 for x in curr_numbers) or len(curr_numbers)==1:
             stop=True
         tmp=[]
@@ -62,13 +53,11 @@ def get_diff2(numbers: list) -> list:
 def result_reduction(num: list) -> int:
     num=num[::-1]
     while len(num)!=1:
-   #     print(num)
         num[1]=num[1]-num[0]
         num=num[1:]
-  #  print(num,num[0])
     return num[0]
 
-SEQUENCES=parse_input('example_part1.txt')
+SEQUENCES=parse_input('input.txt')
 
 def part_two(sequences: list):
     tot=0
